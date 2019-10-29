@@ -37,6 +37,14 @@ class App extends Component {
     })
   }
 
+  clearTodo = () => {
+    this.setState({
+      todo: this.state.todo.filter(filt => {
+        return filt.completed === false
+      })
+    })
+  }
+
   toggleLine = id => {
     this.setState({
       todo: this.state.todo.map(aMap => {
@@ -59,6 +67,7 @@ class App extends Component {
         <TodoList 
           toggleLine={this.toggleLine}
           todo={this.state.todo}
+          clearTodo={this.clearTodo}
           />
 
       </div>
