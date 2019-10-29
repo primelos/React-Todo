@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TodoForm from './components/TodoComponents/TodoForm'
 import TodoList from './components/TodoComponents/TodoList'
-
+import './components/TodoComponents/Todo.css'
 const data = [
   {
     task: 'Learn Angular',
@@ -26,16 +26,20 @@ class App extends Component {
     }
   }
 
-  newTodo = name => {
+  addTodo = task => {
     const newTodo = {
-      task: name,
+      task: task,
       id:Date.now(),
       completed: false
     }
+      this.setState({
+      todo:[...this.state.todo, newTodo]
+    })
   }
+
   toggleLine = id => {
     this.setState({
-      todo: this.state.groceries.map(aMap => {
+      todo: this.state.todo.map(aMap => {
         if (aMap.id === id) {
           return {
             ...aMap,
@@ -51,7 +55,7 @@ class App extends Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+        <TodoForm addTodo={this.addTodo}/>
         <TodoList 
           toggleLine={this.toggleLine}
           todo={this.state.todo}

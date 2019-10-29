@@ -10,13 +10,14 @@ const TodoList = (props) => {
         <div>
             {props.todo.map(bMap => (
                 <Todo 
-                    key={bMap.div}
+                    key={bMap.id}
                     bMap={bMap}
                     toggleLine={props.toggleLine}
                />
             ))}
         <button className='clear' onClick={props.clearTodo}>
-            remove todo</button>
+            remove todo
+        </button>
         </div>
     )
 }
